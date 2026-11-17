@@ -1,0 +1,58 @@
+{
+ "sensor_type": "tube",
+ "cfa": "3chip",
+ "xyz_d65_to_cam": [
+  [
+   3.2404542,
+   -1.5371385,
+   -0.4985314
+  ],
+  [
+   -0.969266,
+   1.8760108,
+   0.041556
+  ],
+  [
+   0.0556434,
+   -0.2040259,
+   1.0572252
+  ]
+ ],
+ "name": "Camera a trois Plumbicon XQ1410 (30 mm)",
+ "tube": {
+  "white_nA": 150.0,
+  "beam_nA": 300.0,
+  "bias_nA": 3.0,
+  "dark_nA": 1.0,
+  "gamma": 0.95,
+  "g_per_nA": 0.1174,
+  "photo_lag": 0.02,
+  "photo_lag_fields": 16.0,
+  "modulation_400": 0.55,
+  "noise_nA": 0.5,
+  "noise_triangular": 1.0,
+  "bloom_px": 3.0,
+  "shading": 0.0,
+  "dark_ref_c": 30.0,
+  "dark_doubling_c": 7.5,
+  "u_max": 150.0
+ },
+ "provenance": {
+  "tube": "Manuel Mullard 'Plumbicon camera tubes and accessories' (1987), fiche XQ1410 : gamma 0,95 +/- 0,05 ; obscurite <= 2 nA ; blanc 150 nA et faisceau 300 nA (tubes de chrominance) ; contraste a 400 lignes TV : 55 % typ. ; remanence en basse lumiere (20 nA, faisceau 300 nA, polarisation 3 nA) : 7 % a 60 ms, 2 % a 200 ms, montee 98 % a 60 ms.",
+  "fit": "g_per_nA, photo_lag et photo_lag_fields regles sur ces trois mesures : le modele donne 7,6 %, 1,6 % et 98 %.",
+  "assumptions": [
+   "Bruit du preamplificateur (0,5 nA) : ordre de grandeur cite de memoire, non verifie.",
+   "Etalement des hautes lumieres (bloom_px) : valeur libre. Le manuel attribue l'eblouissement a la deviation du faisceau ; il est represente ici par un etalement de la charge non stabilisee.",
+   "Couleurs : prisme ideal aux primaires Rec.709."
+  ]
+ },
+ "sensor_pixels": [
+  768,
+  576
+ ],
+ "pixel_pitch_um": [
+  1.0,
+  1.0
+ ],
+ "sensor_grid_source": "Tube : 576 lignes de balayage utiles (PAL 625 lignes, ITU-R BT.601), image 4:3. Le balayage horizontal est continu : il est echantillonne ici au pas des lignes (768 points), la tache du faisceau fixe la vraie finesse."
+}

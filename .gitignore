@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# Builds and outputs
+native/build/
+out/
+
+# Local settings and downloaded data
+config.json
+references/third_party/cie/
+references/third_party/rawtoaces-data/_coef_*.npy
+
+# Timing logs, editor files
+*.log
+.vs/
+.vscode/

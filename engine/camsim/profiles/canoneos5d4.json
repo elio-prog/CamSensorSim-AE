@@ -1,0 +1,229 @@
+{
+ "name": "Canon EOS 5D Mark IV",
+ "sensor_type": "cmos",
+ "cfa": "RGGB",
+ "bits": 14,
+ "black_level": 800,
+ "white_level": 16383,
+ "xyz_d65_to_cam": [
+  [
+   0.6446,
+   -0.0366,
+   -0.0864
+  ],
+  [
+   -0.4436,
+   1.2204,
+   0.2513
+  ],
+  [
+   -0.0952,
+   0.2496,
+   0.6348
+  ]
+ ],
+ "noise": {
+  "unit": "DN sur l'echelle 14 bits ; K = gain du systeme en DN par electron",
+  "K_min": 0.2181895124454343,
+  "K_max": 13.964128796507795,
+  "read_gauss_logsigma": {
+   "slope": 0.6771267783987617,
+   "bias": 1.5121876510805845,
+   "sigma": 0.24641096601611254
+  },
+  "read_tukey_logscale": {
+   "slope": 0.6558756156508007,
+   "bias": 1.09268679594838,
+   "sigma": 0.28604721742277756
+  },
+  "read_tukey_shape": [
+   0.15714285714285714,
+   0.1428571428571428,
+   0.08571428571428574,
+   0.08571428571428574,
+   0.2,
+   0.2,
+   0.09999999999999998,
+   0.08571428571428574,
+   0.05714285714285716,
+   0.0714285714285714,
+   0.02857142857142858,
+   0.02857142857142858,
+   0.014285714285714235,
+   0.02857142857142858,
+   0.08571428571428574,
+   0.0714285714285714,
+   0.11428571428571421,
+   0.11428571428571421
+  ],
+  "row_logsigma": {
+   "slope": 0.4712797750747537,
+   "bias": -0.8078958947116487,
+   "sigma": 0.2436176299944695
+  },
+  "color_bias": [
+   [
+    0.0319037064909935,
+    0.7472504377365112,
+    0.7182117104530334,
+    -0.030375981703400612
+   ],
+   [
+    0.03864448145031929,
+    0.737637996673584,
+    0.7105150818824768,
+    -0.015746131539344788
+   ],
+   [
+    0.9017351269721985,
+    0.7995023131370544,
+    0.7788828015327454,
+    -0.026410957798361778
+   ],
+   [
+    0.8692015409469604,
+    0.774250328540802,
+    0.750357449054718,
+    -0.031980644911527634
+   ],
+   [
+    0.09453476220369339,
+    0.1141323521733284,
+    0.036631934344768524,
+    0.029874160885810852
+   ],
+   [
+    0.05870318412780762,
+    0.11424723267555237,
+    0.039167776703834534,
+    0.005043758079409599
+   ],
+   [
+    0.04573754593729973,
+    0.9214192628860474,
+    0.8722800612449646,
+    0.03396197035908699
+   ],
+   [
+    0.029142839834094048,
+    0.9393751621246338,
+    0.9067599177360535,
+    0.0858841985464096
+   ],
+   [
+    0.9560468196868896,
+    0.06725019216537476,
+    0.8979965448379517,
+    0.21799524128437042
+   ],
+   [
+    0.9395842552185059,
+    0.1125599667429924,
+    0.8603690266609192,
+    0.023629803210496902
+   ],
+   [
+    -0.06777757406234741,
+    -0.0961967334151268,
+    0.8906983733177185,
+    0.7934132814407349
+   ],
+   [
+    0.02324945293366909,
+    -0.08550766855478287,
+    0.8702651262283325,
+    0.6630394458770752
+   ],
+   [
+    0.8119699358940125,
+    0.8134497404098511,
+    -0.08700259029865265,
+    0.07113722711801529
+   ],
+   [
+    0.6970590949058533,
+    0.7572516798973083,
+    -0.13025501370429993,
+    0.9104506373405457
+   ],
+   [
+    -0.18134723603725433,
+    -0.3095093369483948,
+    0.17543870210647583,
+    0.376088410615921
+   ],
+   [
+    -0.015523086301982403,
+    -0.3698689639568329,
+    0.3606455624103546,
+    0.46992045640945435
+   ],
+   [
+    -0.13587871193885803,
+    0.12856300175189972,
+    0.16387391090393066,
+    0.13847239315509796
+   ],
+   [
+    0.17511644959449768,
+    0.037383146584033966,
+    0.8743443489074707,
+    0.26791927218437195
+   ]
+  ]
+ },
+ "fixed_pattern": {
+  "prnu_sigma": 0.0,
+  "dsnu_rel_sigma": 0.4,
+  "dark_current_e_per_s_at_20C": 0.0,
+  "hot_pixel_fraction": 0.0,
+  "note": "non mesure pour cet appareil : valeurs neutres. dsnu_rel_sigma = 40 % du courant d'obscurite pour un CMOS selon Janesick (Photon Transfer, p.169), cite par pyradi."
+ },
+ "provenance": {
+  "noise": "ELD, Vandermode/ELD camera_params/release (MIT). Parametres calibres par les auteurs.",
+  "color": "LibRaw colordata.cpp (matrice Adobe XYZ D65 -> camera).",
+  "levels": "niveaux generiques du code ELD (16383-800), pas ceux de l'appareil",
+  "assumptions": [
+   "K est suppose proportionnel a l'ISO, avec K_min = ISO de base (100). Non confirme par ELD.",
+   "read_tukey_shape et color_bias sont des listes par reglage ISO calibre ; on les interpole regulierement en log(K) entre K_min et K_max. Correspondance exacte non publiee."
+  ]
+ },
+ "sensor_pixels": [
+  6720,
+  4480
+ ],
+ "pixel_pitch_um": [
+  1.0,
+  1.0
+ ],
+ "sensor_grid_source": "Canon EOS 5D Mark IV : 6720 x 4480 photosites effectifs (30,1 Mpx), photosites carres (apotelyt.com).",
+ "video_modes": {
+  "1080p": {
+   "window": [
+    6720,
+    3780
+   ],
+   "readout": "skip3",
+   "size": [
+    1920,
+    1080
+   ],
+   "source": "HYPOTHESE : EOSHD annonce un 1080p 'pixel-binned' sans detail ; la methode des autres Canon (regroupement horizontal, une ligne sur trois) est reprise. Magic Lantern (fil 'Pixel binning patterns in LiveView', a1ex, et wiki 'pixel_binning') : la plupart des Canon regroupent 3 photosites de meme couleur horizontalement et ne lisent qu'une ligne sur trois ; seul le 5D Mark III regroupe aussi verticalement."
+  },
+  "4k": {
+   "window": [
+    4096,
+    2160
+   ],
+   "readout": "full",
+   "size": [
+    4096,
+    2160
+   ],
+   "source": "EOSHD, Frame & Focal : 4K DCI par recadrage du capteur, photosite par photosite, sans regroupement."
+  }
+ },
+ "spectral_ssf": "Canon_EOS_5D_Mark_IV_380_780_5.json",
+ "spectral_default": true,
+ "spectral_source": "Mesure du Canon EOS 5D Mark IV lui-meme. Donnees rawtoaces-data (Academy Software Foundation, Apache-2.0), mesures Weta Digital (systeme lightsaber, 2022), 380-780 nm par pas de 5 nm."
+}

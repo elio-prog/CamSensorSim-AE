@@ -1,0 +1,2736 @@
+{
+ "profiles": [
+  {
+   "key": "sonya7s2",
+   "name": "Sony A7S II (ILCE-7SM2)",
+   "kind": "cmos"
+  },
+  {
+   "key": "canoneos5d4",
+   "name": "Canon EOS 5D Mark IV",
+   "kind": "cmos"
+  },
+  {
+   "key": "canoneos700d",
+   "name": "Canon EOS 700D",
+   "kind": "cmos"
+  },
+  {
+   "key": "canoneos70d",
+   "name": "Canon EOS 70D",
+   "kind": "cmos"
+  },
+  {
+   "key": "nikond850",
+   "name": "Nikon D850",
+   "kind": "cmos"
+  },
+  {
+   "key": "kai0373_3ccd",
+   "name": "Camera 3 CCD (trois capteurs Kodak KAI-0373, 2/3 de pouce)",
+   "kind": "ccd"
+  },
+  {
+   "key": "icx409ak_camcorder",
+   "name": "Camescope a un CCD (Sony ICX409AK, 1/3 de pouce, mosaique complementaire)",
+   "kind": "cmyg"
+  },
+  {
+   "key": "plumbicon_xq1410",
+   "name": "Camera a trois Plumbicon XQ1410 (30 mm)",
+   "kind": "tube"
+  },
+  {
+   "key": "vidicon_xq1031",
+   "name": "Camera noir et blanc a vidicon XQ1031 (1 pouce, couche Sb2S3)",
+   "kind": "tube"
+  }
+ ],
+ "groups": [
+  {
+   "title": "Entree",
+   "items": [
+    {
+     "key": "input_transfer",
+     "label": "Courbe de la source (PNG, video)",
+     "type": "choice",
+     "default": "auto",
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg",
+      "tube"
+     ],
+     "choices": [
+      "auto",
+      "srgb",
+      "bt709",
+      "gamma22",
+      "gamma24",
+      "linear"
+     ],
+     "mut": null,
+     "hint": "auto = sRGB pour les images, BT.709 pour les videos. Sans effet sur les EXR",
+     "integer": false
+    },
+    {
+     "key": "input_tone",
+     "label": "Courbe de tonalite a defaire",
+     "type": "choice",
+     "default": "none",
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg",
+      "tube"
+     ],
+     "choices": [
+      "none",
+      "smoothstep"
+     ],
+     "mut": null,
+     "hint": "smoothstep = courbe en S d'un traitement photo (Brooks et al. 2019)",
+     "integer": false
+    },
+    {
+     "key": "input_exposure_ev",
+     "label": "Exposition de la source (diaphragmes)",
+     "type": "number",
+     "default": 0.0,
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg",
+      "tube"
+     ],
+     "choices": null,
+     "mut": [
+      -2,
+      2
+     ],
+     "hint": "0 = le blanc de l'ecran devient 1,0 en lumiere de scene",
+     "integer": false
+    },
+    {
+     "key": "input_dequantize",
+     "label": "Effacer les marches 8 bits",
+     "type": "bool",
+     "default": true,
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg",
+      "tube"
+     ],
+     "choices": null,
+     "mut": null,
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "output_format",
+     "label": "Format de sortie",
+     "type": "choice",
+     "default": "exr",
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg",
+      "tube"
+     ],
+     "choices": [
+      "exr",
+      "png16"
+     ],
+     "mut": null,
+     "hint": "exr = ACEScg lineaire ; png16 = meme codage que la source",
+     "integer": false
+    }
+   ]
+  },
+  {
+   "title": "Prise de vue",
+   "items": [
+    {
+     "key": "iso",
+     "label": "ISO (gain)",
+     "type": "number",
+     "default": 800,
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg"
+     ],
+     "choices": null,
+     "mut": [
+      100,
+      25600
+     ],
+     "hint": "Plus haut = moins de lumiere captee, donc plus de bruit",
+     "integer": true
+    },
+    {
+     "key": "ev",
+     "label": "Exposition (diaphragmes)",
+     "type": "number",
+     "default": 0.0,
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg",
+      "tube"
+     ],
+     "choices": null,
+     "mut": [
+      -3,
+      2
+     ],
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "exposure_time_s",
+     "label": "Temps de pose (s)",
+     "type": "number",
+     "default": 0.02,
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg",
+      "tube"
+     ],
+     "choices": null,
+     "mut": null,
+     "hint": "Agit sur la trainee CCD, le scintillement, le courant d'obscurite",
+     "integer": false
+    },
+    {
+     "key": "temperature_c",
+     "label": "Temperature du capteur (C)",
+     "type": "number",
+     "default": 30.0,
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg",
+      "tube"
+     ],
+     "choices": null,
+     "mut": [
+      20,
+      70
+     ],
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "seed",
+     "label": "Numero de serie (graine)",
+     "type": "number",
+     "default": 1,
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg",
+      "tube"
+     ],
+     "choices": null,
+     "mut": null,
+     "hint": "Fixe les defauts figes : pixels morts, rayures...",
+     "integer": true
+    },
+    {
+     "key": "fps",
+     "label": "Cadence (images/s)",
+     "type": "number",
+     "default": 25.0,
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg",
+      "tube"
+     ],
+     "choices": null,
+     "mut": null,
+     "hint": "Remplie automatiquement depuis le calque",
+     "integer": false
+    }
+   ]
+  },
+  {
+   "title": "Obturateur",
+   "items": [
+    {
+     "key": "readout_time_s",
+     "label": "Temps de lecture (s), 0 = global",
+     "type": "number",
+     "default": 0.0,
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg"
+     ],
+     "choices": null,
+     "mut": [
+      0,
+      0.04
+     ],
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "shutter_direction",
+     "label": "Sens de lecture",
+     "type": "choice",
+     "default": "top_to_bottom",
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg"
+     ],
+     "choices": [
+      "top_to_bottom",
+      "bottom_to_top"
+     ],
+     "mut": null,
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "flicker_hz",
+     "label": "Scintillement (Hz), 0 = aucun",
+     "type": "number",
+     "default": 0.0,
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg",
+      "tube"
+     ],
+     "choices": null,
+     "mut": null,
+     "hint": "100 = eclairage sur secteur europeen",
+     "integer": false
+    },
+    {
+     "key": "flicker_depth",
+     "label": "Profondeur du scintillement (0-1)",
+     "type": "number",
+     "default": 0.0,
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg",
+      "tube"
+     ],
+     "choices": null,
+     "mut": [
+      0,
+      0.5
+     ],
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "flicker_phase",
+     "label": "Phase du scintillement (rad)",
+     "type": "number",
+     "default": 0.0,
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg",
+      "tube"
+     ],
+     "choices": null,
+     "mut": null,
+     "hint": "",
+     "integer": false
+    }
+   ]
+  },
+  {
+   "title": "Capteur",
+   "items": [
+    {
+     "key": "sensor_resolution",
+     "label": "Resolution de la simulation",
+     "type": "choice",
+     "default": "image",
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg",
+      "tube"
+     ],
+     "choices": [
+      "image",
+      "capteur"
+     ],
+     "mut": null,
+     "hint": "capteur = vraie grille de photosites (ex. 752 x 582 pour le camescope)",
+     "integer": false
+    },
+    {
+     "key": "sensor_output",
+     "label": "Taille de sortie",
+     "type": "choice",
+     "default": "image",
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg",
+      "tube"
+     ],
+     "choices": [
+      "image",
+      "capteur"
+     ],
+     "mut": null,
+     "hint": "image = remise a la taille du calque ; capteur = taille de la grille",
+     "integer": false
+    },
+    {
+     "key": "sensor_upscale",
+     "label": "Agrandissement vers la taille du calque",
+     "type": "choice",
+     "default": "lanczos",
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg",
+      "tube"
+     ],
+     "choices": [
+      "lanczos",
+      "bilinear",
+      "nearest"
+     ],
+     "mut": null,
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "video_mode",
+     "label": "Mode video de l'appareil photo",
+     "type": "choice",
+     "default": "off",
+     "kinds": [
+      "cmos"
+     ],
+     "choices": [
+      "off",
+      "1080p",
+      "4k"
+     ],
+     "mut": null,
+     "hint": "Lecture partielle du capteur en video : sauts de lignes, regroupement, recadrage",
+     "integer": false
+    },
+    {
+     "key": "video_readout",
+     "label": "Methode de lecture video",
+     "type": "choice",
+     "default": "auto",
+     "kinds": [
+      "cmos"
+     ],
+     "choices": [
+      "auto",
+      "full",
+      "skip3",
+      "bin3x3",
+      "vbin2"
+     ],
+     "mut": null,
+     "hint": "auto = celle de l'appareil ; skip3 = 1 ligne sur 3 (Canon) ; bin3x3 = 5D Mark III ; full = tout lire",
+     "integer": false
+    },
+    {
+     "key": "olpf_h_px",
+     "label": "Filtre passe-bas horizontal (px)",
+     "type": "number",
+     "default": 1.0,
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg"
+     ],
+     "choices": null,
+     "mut": [
+      0,
+      2
+     ],
+     "hint": "0 = pas de filtre (moire), 1 = normal",
+     "integer": false
+    },
+    {
+     "key": "olpf_v_px",
+     "label": "Filtre passe-bas vertical (px)",
+     "type": "number",
+     "default": 1.0,
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg"
+     ],
+     "choices": null,
+     "mut": [
+      0,
+      2
+     ],
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "shot_noise",
+     "label": "Bruit de photons",
+     "type": "bool",
+     "default": true,
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg"
+     ],
+     "choices": null,
+     "mut": null,
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "read_noise_model",
+     "label": "Bruit de lecture",
+     "type": "choice",
+     "default": "tukey",
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg"
+     ],
+     "choices": [
+      "tukey",
+      "gauss",
+      "off"
+     ],
+     "mut": null,
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "read_noise_gain",
+     "label": "Bruit de lecture x",
+     "type": "number",
+     "default": 1.0,
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg"
+     ],
+     "choices": null,
+     "mut": [
+      0.5,
+      8
+     ],
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "row_noise_gain",
+     "label": "Bruit de ligne x",
+     "type": "number",
+     "default": 1.0,
+     "kinds": [
+      "cmos"
+     ],
+     "choices": null,
+     "mut": [
+      0,
+      30
+     ],
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "color_bias_gain",
+     "label": "Biais du noir par canal x",
+     "type": "number",
+     "default": 1.0,
+     "kinds": [
+      "cmos"
+     ],
+     "choices": null,
+     "mut": [
+      0,
+      20
+     ],
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "prnu_sigma",
+     "label": "Non-uniformite de sensibilite",
+     "type": "number",
+     "default": null,
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg"
+     ],
+     "choices": null,
+     "mut": [
+      0,
+      0.08
+     ],
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "dsnu_rel_sigma",
+     "label": "Non-uniformite d'obscurite",
+     "type": "number",
+     "default": null,
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg"
+     ],
+     "choices": null,
+     "mut": null,
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "dark_current_e_per_s",
+     "label": "Courant d'obscurite (e-/s a 20 C)",
+     "type": "number",
+     "default": null,
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg"
+     ],
+     "choices": null,
+     "mut": [
+      0,
+      3000
+     ],
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "hot_pixel_fraction",
+     "label": "Part de pixels chauds",
+     "type": "number",
+     "default": null,
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg"
+     ],
+     "choices": null,
+     "mut": [
+      0,
+      0.002
+     ],
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "hot_pixel_gain",
+     "label": "Force des pixels chauds x",
+     "type": "number",
+     "default": 1000.0,
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg"
+     ],
+     "choices": null,
+     "mut": null,
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "full_well_gain",
+     "label": "Capacite du puits x",
+     "type": "number",
+     "default": 1.0,
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg"
+     ],
+     "choices": null,
+     "mut": [
+      0.1,
+      1
+     ],
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "clip_full_well",
+     "label": "Saturation du puits",
+     "type": "bool",
+     "default": true,
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg"
+     ],
+     "choices": null,
+     "mut": null,
+     "hint": "",
+     "integer": false
+    }
+   ]
+  },
+  {
+   "title": "Defauts fixes",
+   "items": [
+    {
+     "key": "column_fpn_dn",
+     "label": "Decalage des colonnes (DN)",
+     "type": "number",
+     "default": 0.0,
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg"
+     ],
+     "choices": null,
+     "mut": [
+      0,
+      40
+     ],
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "column_gain_sigma",
+     "label": "Ecart de gain des colonnes",
+     "type": "number",
+     "default": 0.0,
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg"
+     ],
+     "choices": null,
+     "mut": [
+      0,
+      0.1
+     ],
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "dead_pixel_fraction",
+     "label": "Part de pixels morts",
+     "type": "number",
+     "default": 0.0,
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg"
+     ],
+     "choices": null,
+     "mut": [
+      0,
+      0.01
+     ],
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "stuck_pixel_fraction",
+     "label": "Part de pixels colles",
+     "type": "number",
+     "default": 0.0,
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg"
+     ],
+     "choices": null,
+     "mut": [
+      0,
+      0.003
+     ],
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "dead_columns",
+     "label": "Colonnes mortes",
+     "type": "number",
+     "default": 0,
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg"
+     ],
+     "choices": null,
+     "mut": [
+      0,
+      12
+     ],
+     "hint": "",
+     "integer": true
+    },
+    {
+     "key": "dead_rows",
+     "label": "Lignes mortes",
+     "type": "number",
+     "default": 0,
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg"
+     ],
+     "choices": null,
+     "mut": [
+      0,
+      8
+     ],
+     "hint": "",
+     "integer": true
+    }
+   ]
+  },
+  {
+   "title": "Pannes",
+   "items": [
+    {
+     "key": "row_address_stuck",
+     "label": "Bit d'adresse de ligne colle (ex. 6:0)",
+     "type": "text",
+     "default": "",
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg"
+     ],
+     "choices": null,
+     "mut": null,
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "col_address_stuck",
+     "label": "Bit d'adresse de colonne colle",
+     "type": "text",
+     "default": "",
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg"
+     ],
+     "choices": null,
+     "mut": null,
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "row_address_error_rate",
+     "label": "Lignes lues au mauvais endroit (0-1)",
+     "type": "number",
+     "default": 0.0,
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg"
+     ],
+     "choices": null,
+     "mut": [
+      0,
+      0.08
+     ],
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "col_address_error_rate",
+     "label": "Colonnes lues au mauvais endroit (0-1)",
+     "type": "number",
+     "default": 0.0,
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg"
+     ],
+     "choices": null,
+     "mut": [
+      0,
+      0.08
+     ],
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "interference_dn",
+     "label": "Parasite d'alimentation (DN)",
+     "type": "number",
+     "default": 0.0,
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg"
+     ],
+     "choices": null,
+     "mut": [
+      0,
+      200
+     ],
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "interference_period_px",
+     "label": "Periode du parasite (px)",
+     "type": "number",
+     "default": 517.3,
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg"
+     ],
+     "choices": null,
+     "mut": [
+      40,
+      4000
+     ],
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "bitslip",
+     "label": "Glissement de bits (liaison serie)",
+     "type": "number",
+     "default": 0,
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg"
+     ],
+     "choices": null,
+     "mut": null,
+     "hint": "",
+     "integer": true
+    },
+    {
+     "key": "line_shift_rate",
+     "label": "Lignes qui glissent (0-1)",
+     "type": "number",
+     "default": 0.0,
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg"
+     ],
+     "choices": null,
+     "mut": [
+      0,
+      0.1
+     ],
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "line_shift_max_px",
+     "label": "Glissement maximal (px)",
+     "type": "number",
+     "default": 8,
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg"
+     ],
+     "choices": null,
+     "mut": null,
+     "hint": "",
+     "integer": true
+    },
+    {
+     "key": "line_shift_persist",
+     "label": "Synchro perdue (glissements cumules)",
+     "type": "bool",
+     "default": false,
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg"
+     ],
+     "choices": null,
+     "mut": null,
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "frame_tear_rate",
+     "label": "Images dechirees (0-1)",
+     "type": "number",
+     "default": 0.0,
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg"
+     ],
+     "choices": null,
+     "mut": [
+      0,
+      0.5
+     ],
+     "hint": "",
+     "integer": false
+    }
+   ]
+  },
+  {
+   "title": "Convertisseur",
+   "items": [
+    {
+     "key": "quantize",
+     "label": "Numerisation",
+     "type": "bool",
+     "default": true,
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg"
+     ],
+     "choices": null,
+     "mut": null,
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "adc_bits",
+     "label": "Profondeur (bits), vide = profil",
+     "type": "number",
+     "default": null,
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg"
+     ],
+     "choices": null,
+     "mut": [
+      3,
+      12
+     ],
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "adc_dnl_lsb",
+     "label": "Marches irregulieres (LSB)",
+     "type": "number",
+     "default": 0.0,
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg"
+     ],
+     "choices": null,
+     "mut": [
+      0,
+      1.2
+     ],
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "adc_inl_lsb",
+     "label": "Courbure (LSB)",
+     "type": "number",
+     "default": 0.0,
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg"
+     ],
+     "choices": null,
+     "mut": [
+      0,
+      400
+     ],
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "adc_stuck_bits",
+     "label": "Bits colles (ex. 10:1,8:0)",
+     "type": "text",
+     "default": "",
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg"
+     ],
+     "choices": null,
+     "mut": null,
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "adc_sparkle_rate",
+     "label": "Bits inverses au hasard (0-1)",
+     "type": "number",
+     "default": 0.0,
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg"
+     ],
+     "choices": null,
+     "mut": [
+      0,
+      0.02
+     ],
+     "hint": "",
+     "integer": false
+    }
+   ]
+  },
+  {
+   "title": "CCD et 3 capteurs",
+   "items": [
+    {
+     "key": "ccd_smear_gain",
+     "label": "Trainee verticale x",
+     "type": "number",
+     "default": 1.0,
+     "kinds": [
+      "ccd",
+      "cmyg"
+     ],
+     "choices": null,
+     "mut": [
+      0,
+      200
+     ],
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "ccd_antiblooming",
+     "label": "Protection contre l'eblouissement (1 = aucune)",
+     "type": "number",
+     "default": null,
+     "kinds": [
+      "ccd",
+      "cmyg"
+     ],
+     "choices": null,
+     "mut": [
+      1,
+      300
+     ],
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "ccd_cti_v",
+     "label": "Perte au transfert vertical",
+     "type": "number",
+     "default": null,
+     "kinds": [
+      "ccd",
+      "cmyg"
+     ],
+     "choices": null,
+     "mut": [
+      0,
+      0.002
+     ],
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "ccd_cti_h",
+     "label": "Perte au transfert horizontal",
+     "type": "number",
+     "default": null,
+     "kinds": [
+      "ccd",
+      "cmyg"
+     ],
+     "choices": null,
+     "mut": [
+      0,
+      0.002
+     ],
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "ccd_blocked_columns",
+     "label": "Colonnes bloquees",
+     "type": "number",
+     "default": 0,
+     "kinds": [
+      "ccd",
+      "cmyg"
+     ],
+     "choices": null,
+     "mut": [
+      0,
+      10
+     ],
+     "hint": "",
+     "integer": true
+    },
+    {
+     "key": "interlace",
+     "label": "Lecture entrelacee",
+     "type": "choice",
+     "default": null,
+     "kinds": [
+      "ccd"
+     ],
+     "choices": [
+      "",
+      "off",
+      "fields"
+     ],
+     "mut": null,
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "registration_r_dx",
+     "label": "Rouge decale en X (px)",
+     "type": "number",
+     "default": 0.0,
+     "kinds": [
+      "ccd",
+      "tube"
+     ],
+     "choices": null,
+     "mut": [
+      -4,
+      4
+     ],
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "registration_r_dy",
+     "label": "Rouge decale en Y (px)",
+     "type": "number",
+     "default": 0.0,
+     "kinds": [
+      "ccd",
+      "tube"
+     ],
+     "choices": null,
+     "mut": [
+      -4,
+      4
+     ],
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "registration_b_dx",
+     "label": "Bleu decale en X (px)",
+     "type": "number",
+     "default": 0.0,
+     "kinds": [
+      "ccd",
+      "tube"
+     ],
+     "choices": null,
+     "mut": [
+      -4,
+      4
+     ],
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "registration_b_dy",
+     "label": "Bleu decale en Y (px)",
+     "type": "number",
+     "default": 0.0,
+     "kinds": [
+      "ccd",
+      "tube"
+     ],
+     "choices": null,
+     "mut": [
+      -4,
+      4
+     ],
+     "hint": "",
+     "integer": false
+    }
+   ]
+  },
+  {
+   "title": "Tube",
+   "items": [
+    {
+     "key": "tube_beam_nA",
+     "label": "Courant du faisceau (nA)",
+     "type": "number",
+     "default": null,
+     "kinds": [
+      "tube"
+     ],
+     "choices": null,
+     "mut": [
+      100,
+      1200
+     ],
+     "hint": "Bas = trainees de comete",
+     "integer": false
+    },
+    {
+     "key": "tube_bias_nA",
+     "label": "Lumiere de polarisation (nA)",
+     "type": "number",
+     "default": null,
+     "kinds": [
+      "tube"
+     ],
+     "choices": null,
+     "mut": [
+      0,
+      10
+     ],
+     "hint": "0 = plus de remanence",
+     "integer": false
+    },
+    {
+     "key": "tube_dark_nA",
+     "label": "Courant d'obscurite (nA)",
+     "type": "number",
+     "default": null,
+     "kinds": [
+      "tube"
+     ],
+     "choices": null,
+     "mut": null,
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "tube_gamma",
+     "label": "Gamma de la couche",
+     "type": "number",
+     "default": null,
+     "kinds": [
+      "tube"
+     ],
+     "choices": null,
+     "mut": [
+      0.5,
+      1
+     ],
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "tube_photo_lag",
+     "label": "Remanence de la couche (0-1)",
+     "type": "number",
+     "default": null,
+     "kinds": [
+      "tube"
+     ],
+     "choices": null,
+     "mut": [
+      0,
+      0.7
+     ],
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "tube_photo_lag_fields",
+     "label": "Duree de la remanence (trames)",
+     "type": "number",
+     "default": null,
+     "kinds": [
+      "tube"
+     ],
+     "choices": null,
+     "mut": [
+      2,
+      40
+     ],
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "tube_noise_nA",
+     "label": "Bruit du preamplificateur (nA)",
+     "type": "number",
+     "default": null,
+     "kinds": [
+      "tube"
+     ],
+     "choices": null,
+     "mut": [
+      0,
+      8
+     ],
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "tube_spot_px",
+     "label": "Tache du faisceau (px)",
+     "type": "number",
+     "default": null,
+     "kinds": [
+      "tube"
+     ],
+     "choices": null,
+     "mut": [
+      0,
+      6
+     ],
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "tube_bloom_px",
+     "label": "Etalement des hautes lumieres (px)",
+     "type": "number",
+     "default": null,
+     "kinds": [
+      "tube"
+     ],
+     "choices": null,
+     "mut": [
+      0,
+      20
+     ],
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "tube_shading",
+     "label": "Ombrage vers les bords (0-1)",
+     "type": "number",
+     "default": null,
+     "kinds": [
+      "tube"
+     ],
+     "choices": null,
+     "mut": [
+      0,
+      0.6
+     ],
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "tube_burn_gain",
+     "label": "Marquage de la cible (0-1)",
+     "type": "number",
+     "default": 0.0,
+     "kinds": [
+      "tube"
+     ],
+     "choices": null,
+     "mut": [
+      0,
+      0.6
+     ],
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "tube_burn_seconds",
+     "label": "Vitesse du marquage (s)",
+     "type": "number",
+     "default": 30.0,
+     "kinds": [
+      "tube"
+     ],
+     "choices": null,
+     "mut": null,
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "tube_gamma_correct",
+     "label": "Correction du gamma par la camera",
+     "type": "bool",
+     "default": true,
+     "kinds": [
+      "tube"
+     ],
+     "choices": null,
+     "mut": null,
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "tube_fields_per_frame",
+     "label": "Trames par image",
+     "type": "number",
+     "default": 2,
+     "kinds": [
+      "tube"
+     ],
+     "choices": null,
+     "mut": null,
+     "hint": "",
+     "integer": true
+    },
+    {
+     "key": "tube_interlace",
+     "label": "Entrelacement",
+     "type": "bool",
+     "default": true,
+     "kinds": [
+      "tube"
+     ],
+     "choices": null,
+     "mut": null,
+     "hint": "",
+     "integer": false
+    }
+   ]
+  },
+  {
+   "title": "Camescope",
+   "items": [
+    {
+     "key": "cmyg_chroma_bw_mhz",
+     "label": "Bande passante des couleurs (MHz)",
+     "type": "number",
+     "default": 1.0,
+     "kinds": [
+      "cmyg"
+     ],
+     "choices": null,
+     "mut": [
+      0.3,
+      4
+     ],
+     "hint": "Bas = couleurs qui bavent horizontalement",
+     "integer": false
+    },
+    {
+     "key": "cmyg_chroma_vertical",
+     "label": "Couleur verticale",
+     "type": "choice",
+     "default": "1H",
+     "kinds": [
+      "cmyg"
+     ],
+     "choices": [
+      "1H",
+      "2H"
+     ],
+     "mut": null,
+     "hint": "1H = reprise de la ligne precedente (couleurs decalees)",
+     "integer": false
+    },
+    {
+     "key": "cmyg_chroma_gain",
+     "label": "Niveau de couleur x",
+     "type": "number",
+     "default": 1.0,
+     "kinds": [
+      "cmyg"
+     ],
+     "choices": null,
+     "mut": [
+      0,
+      2
+     ],
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "cmyg_field_flicker",
+     "label": "Ecart entre trames (fiche : 0,02 max)",
+     "type": "number",
+     "default": null,
+     "kinds": [
+      "cmyg"
+     ],
+     "choices": null,
+     "mut": [
+      0,
+      0.15
+     ],
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "cmyg_line_crawl",
+     "label": "Ecart entre lignes (fiche : 0,03 max)",
+     "type": "number",
+     "default": null,
+     "kinds": [
+      "cmyg"
+     ],
+     "choices": null,
+     "mut": [
+      0,
+      0.2
+     ],
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "ccd_lag",
+     "label": "Remanence (0-1, fiche : 0,005 max)",
+     "type": "number",
+     "default": null,
+     "kinds": [
+      "ccd",
+      "cmyg"
+     ],
+     "choices": null,
+     "mut": [
+      0,
+      0.5
+     ],
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "sensor_shading",
+     "label": "Ombrage vers les coins (0-1, fiche : 0,20 max)",
+     "type": "number",
+     "default": null,
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg"
+     ],
+     "choices": null,
+     "mut": [
+      0,
+      0.6
+     ],
+     "hint": "",
+     "integer": false
+    }
+   ]
+  },
+  {
+   "title": "Automatismes",
+   "items": [
+    {
+     "key": "auto_exposure",
+     "label": "Exposition automatique",
+     "type": "bool",
+     "default": false,
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg"
+     ],
+     "choices": null,
+     "mut": null,
+     "hint": "Diaphragme puis gain ; images traitees dans l'ordre",
+     "integer": false
+    },
+    {
+     "key": "ae_metering",
+     "label": "Mesure",
+     "type": "choice",
+     "default": "center",
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg"
+     ],
+     "choices": [
+      "center",
+      "average",
+      "spot",
+      "peak"
+     ],
+     "mut": null,
+     "hint": "center = ponderee centrale ; peak = protege les hautes lumieres",
+     "integer": false
+    },
+    {
+     "key": "ae_target",
+     "label": "Luminosite visee (0,18 = gris moyen)",
+     "type": "number",
+     "default": 0.18,
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg"
+     ],
+     "choices": null,
+     "mut": [
+      0.08,
+      0.4
+     ],
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "ae_speed_s",
+     "label": "Temps de reaction (s)",
+     "type": "number",
+     "default": 0.4,
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg"
+     ],
+     "choices": null,
+     "mut": [
+      0.05,
+      3.0
+     ],
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "ae_damping",
+     "label": "Amortissement (1 = doux, 0,2 = pompage)",
+     "type": "number",
+     "default": 0.7,
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg"
+     ],
+     "choices": null,
+     "mut": [
+      0.1,
+      1.2
+     ],
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "ae_deadband_ev",
+     "label": "Ecart tolere (diaphragmes)",
+     "type": "number",
+     "default": 0.15,
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg"
+     ],
+     "choices": null,
+     "mut": [
+      0,
+      1.0
+     ],
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "ae_max_rate_ev_s",
+     "label": "Vitesse max. du diaphragme (diaph./s)",
+     "type": "number",
+     "default": 4.0,
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg"
+     ],
+     "choices": null,
+     "mut": [
+      0.5,
+      10
+     ],
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "ae_iris_min_ev",
+     "label": "Butee du diaphragme : fermeture (diaph.)",
+     "type": "number",
+     "default": -6.0,
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg"
+     ],
+     "choices": null,
+     "mut": null,
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "ae_iris_max_ev",
+     "label": "Butee du diaphragme : ouverture (diaph.)",
+     "type": "number",
+     "default": 2.0,
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg"
+     ],
+     "choices": null,
+     "mut": [
+      0,
+      4
+     ],
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "auto_gain",
+     "label": "Gain automatique (AGC)",
+     "type": "bool",
+     "default": true,
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg"
+     ],
+     "choices": null,
+     "mut": null,
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "ae_gain_max_db",
+     "label": "Gain maximal (dB)",
+     "type": "number",
+     "default": 18.0,
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg"
+     ],
+     "choices": null,
+     "mut": [
+      0,
+      30
+     ],
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "auto_wb",
+     "label": "Balance des blancs automatique",
+     "type": "bool",
+     "default": false,
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg"
+     ],
+     "choices": null,
+     "mut": null,
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "awb_method",
+     "label": "Methode",
+     "type": "choice",
+     "default": "grayworld",
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg"
+     ],
+     "choices": [
+      "grayworld",
+      "whitepatch"
+     ],
+     "mut": null,
+     "hint": "grayworld = moyenne des couleurs ; whitepatch = points les plus clairs",
+     "integer": false
+    },
+    {
+     "key": "awb_speed_s",
+     "label": "Temps de reaction de la balance (s)",
+     "type": "number",
+     "default": 1.5,
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg"
+     ],
+     "choices": null,
+     "mut": [
+      0.2,
+      6.0
+     ],
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "awb_strength",
+     "label": "Part de la correction (1 = complete)",
+     "type": "number",
+     "default": 1.0,
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg"
+     ],
+     "choices": null,
+     "mut": [
+      0.3,
+      1.0
+     ],
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "awb_deadband",
+     "label": "Ecart tolere de la balance",
+     "type": "number",
+     "default": 0.03,
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg"
+     ],
+     "choices": null,
+     "mut": [
+      0,
+      0.2
+     ],
+     "hint": "",
+     "integer": false
+    }
+   ]
+  },
+  {
+   "title": "Analogique",
+   "items": [
+    {
+     "key": "analog_standard",
+     "label": "Signal analogique",
+     "type": "choice",
+     "default": "off",
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg",
+      "tube"
+     ],
+     "choices": [
+      "off",
+      "pal",
+      "ntsc"
+     ],
+     "mut": null,
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "analog_tape",
+     "label": "Bande",
+     "type": "choice",
+     "default": "none",
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg",
+      "tube"
+     ],
+     "choices": [
+      "none",
+      "vhs",
+      "vhs_lp",
+      "svhs",
+      "video8",
+      "hi8"
+     ],
+     "mut": null,
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "analog_composite",
+     "label": "Liaison composite (sous-porteuse)",
+     "type": "bool",
+     "default": true,
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg",
+      "tube"
+     ],
+     "choices": null,
+     "mut": null,
+     "hint": "Chenillement de points, irisations",
+     "integer": false
+    },
+    {
+     "key": "analog_decoder",
+     "label": "Separation luminance / couleur",
+     "type": "choice",
+     "default": "notch",
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg",
+      "tube"
+     ],
+     "choices": [
+      "notch",
+      "comb"
+     ],
+     "mut": null,
+     "hint": "notch = televiseur simple ; comb = peigne, plus propre",
+     "integer": false
+    },
+    {
+     "key": "analog_link_snr_db",
+     "label": "Bruit de la liaison (dB, bas = neige)",
+     "type": "number",
+     "default": 55.0,
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg",
+      "tube"
+     ],
+     "choices": null,
+     "mut": [
+      25,
+      60
+     ],
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "analog_hue_deg",
+     "label": "Erreur de teinte (NTSC, degres)",
+     "type": "number",
+     "default": 0.0,
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg",
+      "tube"
+     ],
+     "choices": null,
+     "mut": [
+      -30,
+      30
+     ],
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "analog_luma_bw_mhz",
+     "label": "Bande passante luminance (MHz)",
+     "type": "number",
+     "default": null,
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg",
+      "tube"
+     ],
+     "choices": null,
+     "mut": [
+      1.0,
+      5.0
+     ],
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "analog_chroma_bw_mhz",
+     "label": "Bande passante couleur (MHz)",
+     "type": "number",
+     "default": null,
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg",
+      "tube"
+     ],
+     "choices": null,
+     "mut": [
+      0.1,
+      0.6
+     ],
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "analog_snr_db",
+     "label": "Bruit de la bande (dB)",
+     "type": "number",
+     "default": null,
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg",
+      "tube"
+     ],
+     "choices": null,
+     "mut": [
+      25,
+      46
+     ],
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "analog_chroma_snr_db",
+     "label": "Bruit de la couleur (dB)",
+     "type": "number",
+     "default": null,
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg",
+      "tube"
+     ],
+     "choices": null,
+     "mut": [
+      20,
+      40
+     ],
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "analog_chroma_delay_us",
+     "label": "Retard de la couleur (us)",
+     "type": "number",
+     "default": null,
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg",
+      "tube"
+     ],
+     "choices": null,
+     "mut": [
+      0,
+      1.0
+     ],
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "analog_jitter_us",
+     "label": "Instabilite des lignes (us)",
+     "type": "number",
+     "default": null,
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg",
+      "tube"
+     ],
+     "choices": null,
+     "mut": [
+      0,
+      0.5
+     ],
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "analog_skew_us",
+     "label": "Haut de l'image qui penche (us)",
+     "type": "number",
+     "default": null,
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg",
+      "tube"
+     ],
+     "choices": null,
+     "mut": [
+      0,
+      3.0
+     ],
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "analog_head_switch_lines",
+     "label": "Lignes de commutation des tetes",
+     "type": "number",
+     "default": null,
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg",
+      "tube"
+     ],
+     "choices": null,
+     "mut": [
+      0,
+      12
+     ],
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "analog_head_switch_us",
+     "label": "Decalage de commutation (us)",
+     "type": "number",
+     "default": null,
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg",
+      "tube"
+     ],
+     "choices": null,
+     "mut": [
+      0,
+      8
+     ],
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "analog_dropouts",
+     "label": "Pertes de signal par image",
+     "type": "number",
+     "default": 0.0,
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg",
+      "tube"
+     ],
+     "choices": null,
+     "mut": [
+      0,
+      20
+     ],
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "analog_dropout_comp",
+     "label": "Compensateur de pertes",
+     "type": "bool",
+     "default": true,
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg",
+      "tube"
+     ],
+     "choices": null,
+     "mut": null,
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "analog_tracking",
+     "label": "Bande mal calee (0-1)",
+     "type": "number",
+     "default": 0.0,
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg",
+      "tube"
+     ],
+     "choices": null,
+     "mut": [
+      0,
+      1
+     ],
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "analog_generations",
+     "label": "Copies successives",
+     "type": "number",
+     "default": 1,
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg",
+      "tube"
+     ],
+     "choices": null,
+     "mut": [
+      1,
+      5
+     ],
+     "hint": "",
+     "integer": true
+    },
+    {
+     "key": "analog_sharpness",
+     "label": "Accentuation du magnetoscope",
+     "type": "number",
+     "default": 0.0,
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg",
+      "tube"
+     ],
+     "choices": null,
+     "mut": [
+      0,
+      1.5
+     ],
+     "hint": "",
+     "integer": false
+    }
+   ]
+  },
+  {
+   "title": "Enregistrement",
+   "items": [
+    {
+     "key": "rec_format",
+     "label": "Format d'enregistrement",
+     "type": "choice",
+     "default": "off",
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg",
+      "tube"
+     ],
+     "choices": [
+      "off",
+      "dv_pal",
+      "dv_ntsc",
+      "dvd",
+      "hdv",
+      "mjpeg",
+      "h264_phone",
+      "h264_dslr",
+      "3gp"
+     ],
+     "mut": null,
+     "hint": "Vrai codec (ffmpeg). Calcule sur toute la sequence ; pas de couche alpha en sortie",
+     "integer": false
+    },
+    {
+     "key": "rec_bitrate_scale",
+     "label": "Debit x (bas = blocs)",
+     "type": "number",
+     "default": 1.0,
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg",
+      "tube"
+     ],
+     "choices": null,
+     "mut": [
+      0.05,
+      1.0
+     ],
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "rec_gop",
+     "label": "Groupe d'images (vide = format)",
+     "type": "number",
+     "default": null,
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg",
+      "tube"
+     ],
+     "choices": null,
+     "mut": [
+      1,
+      60
+     ],
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "rec_errors",
+     "label": "Octets abimes (ex. 0.0001)",
+     "type": "number",
+     "default": 0.0,
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg",
+      "tube"
+     ],
+     "choices": null,
+     "mut": [
+      0,
+      0.0005
+     ],
+     "hint": "Vraies erreurs de flux, decodees par un vrai decodeur",
+     "integer": false
+    },
+    {
+     "key": "rec_drop",
+     "label": "Paquets perdus (0-1)",
+     "type": "number",
+     "default": 0.0,
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg",
+      "tube"
+     ],
+     "choices": null,
+     "mut": [
+      0,
+      0.1
+     ],
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "rec_native_fps",
+     "label": "Cadence du format (3GP : 15 im/s)",
+     "type": "bool",
+     "default": true,
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg",
+      "tube"
+     ],
+     "choices": null,
+     "mut": null,
+     "hint": "",
+     "integer": false
+    }
+   ]
+  },
+  {
+   "title": "Etage video",
+   "items": [
+    {
+     "key": "dsp_enabled",
+     "label": "Etage video (coude, contours)",
+     "type": "choice",
+     "default": "profil",
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg",
+      "tube"
+     ],
+     "choices": [
+      "profil",
+      "on",
+      "off"
+     ],
+     "mut": null,
+     "hint": "Actif par defaut pour le camescope",
+     "integer": false
+    },
+    {
+     "key": "dsp_knee_point",
+     "label": "Point de coude (1 = 100 %)",
+     "type": "number",
+     "default": null,
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg",
+      "tube"
+     ],
+     "choices": null,
+     "mut": [
+      0.6,
+      1.0
+     ],
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "dsp_knee_slope",
+     "label": "Pente au-dessus du coude",
+     "type": "number",
+     "default": null,
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg",
+      "tube"
+     ],
+     "choices": null,
+     "mut": [
+      0.05,
+      1.0
+     ],
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "dsp_white_clip",
+     "label": "Ecretage du blanc (1 = 100 %)",
+     "type": "number",
+     "default": null,
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg",
+      "tube"
+     ],
+     "choices": null,
+     "mut": [
+      0.9,
+      1.1
+     ],
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "dsp_detail_h",
+     "label": "Accentuation horizontale des contours",
+     "type": "number",
+     "default": null,
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg",
+      "tube"
+     ],
+     "choices": null,
+     "mut": [
+      0,
+      2.5
+     ],
+     "hint": "Halos clairs et sombres autour des bords",
+     "integer": false
+    },
+    {
+     "key": "dsp_detail_v",
+     "label": "Accentuation verticale des contours",
+     "type": "number",
+     "default": null,
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg",
+      "tube"
+     ],
+     "choices": null,
+     "mut": [
+      0,
+      2.0
+     ],
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "dsp_detail_coring",
+     "label": "Seuil des details (evite d'accentuer le bruit)",
+     "type": "number",
+     "default": null,
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg",
+      "tube"
+     ],
+     "choices": null,
+     "mut": [
+      0,
+      0.05
+     ],
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "dsp_detail_limit",
+     "label": "Amplitude maximale des halos",
+     "type": "number",
+     "default": null,
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg",
+      "tube"
+     ],
+     "choices": null,
+     "mut": [
+      0.02,
+      0.4
+     ],
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "dsp_highlight_chroma",
+     "label": "Couleurs reduites dans les blancs (0-1)",
+     "type": "number",
+     "default": null,
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg",
+      "tube"
+     ],
+     "choices": null,
+     "mut": [
+      0,
+      1
+     ],
+     "hint": "",
+     "integer": false
+    }
+   ]
+  },
+  {
+   "title": "Traitement",
+   "items": [
+    {
+     "key": "wb_red",
+     "label": "Balance des blancs : rouge x",
+     "type": "number",
+     "default": 1.0,
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg"
+     ],
+     "choices": null,
+     "mut": [
+      0.5,
+      2
+     ],
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "wb_blue",
+     "label": "Balance des blancs : bleu x",
+     "type": "number",
+     "default": 1.0,
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg"
+     ],
+     "choices": null,
+     "mut": [
+      0.5,
+      2
+     ],
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "spectral",
+     "label": "Couleur spectrale (vraies courbes du capteur)",
+     "type": "choice",
+     "default": "profil",
+     "kinds": [
+      "cmos"
+     ],
+     "choices": [
+      "profil",
+      "on",
+      "off"
+     ],
+     "mut": null,
+     "hint": "off = simple matrice ; 70D et 700D : courbes d'appareils voisins",
+     "integer": false
+    },
+    {
+     "key": "demosaic",
+     "label": "Dematricage",
+     "type": "choice",
+     "default": "malvar",
+     "kinds": [
+      "cmos"
+     ],
+     "choices": [
+      "malvar",
+      "bilinear",
+      "nearest"
+     ],
+     "mut": null,
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "clip_highlights",
+     "label": "Ecretage des hautes lumieres",
+     "type": "bool",
+     "default": true,
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg"
+     ],
+     "choices": null,
+     "mut": null,
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "isp_bayer_dx",
+     "label": "Motif de Bayer decale en X (0 ou 1)",
+     "type": "number",
+     "default": 0,
+     "kinds": [
+      "cmos"
+     ],
+     "choices": null,
+     "mut": null,
+     "hint": "",
+     "integer": true
+    },
+    {
+     "key": "isp_bayer_dy",
+     "label": "Motif de Bayer decale en Y (0 ou 1)",
+     "type": "number",
+     "default": 0,
+     "kinds": [
+      "cmos"
+     ],
+     "choices": null,
+     "mut": null,
+     "hint": "",
+     "integer": true
+    },
+    {
+     "key": "isp_black_offset_dn",
+     "label": "Erreur de niveau noir (DN)",
+     "type": "number",
+     "default": 0.0,
+     "kinds": [
+      "cmos",
+      "ccd",
+      "cmyg"
+     ],
+     "choices": null,
+     "mut": [
+      -150,
+      150
+     ],
+     "hint": "",
+     "integer": false
+    },
+    {
+     "key": "isp_remove_color_bias",
+     "label": "Biais par canal corrige par la camera",
+     "type": "bool",
+     "default": false,
+     "kinds": [
+      "cmos"
+     ],
+     "choices": null,
+     "mut": null,
+     "hint": "",
+     "integer": false
+    }
+   ]
+  }
+ ]
+}

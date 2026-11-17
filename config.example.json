@@ -1,0 +1,4 @@
+{
+ "ffmpeg": "C:\\path\\to\\ffmpeg.exe",
+ "ffprobe": "C:\\path\\to\\ffprobe.exe"
+}

@@ -1,0 +1,95 @@
+{
+ "name": "Camera 3 CCD (trois capteurs Kodak KAI-0373, 2/3 de pouce)",
+ "sensor_type": "ccd",
+ "cfa": "3chip",
+ "bits": 12,
+ "black_level": 64,
+ "white_level": 4095,
+ "xyz_d65_to_cam": [
+  [
+   3.2404542,
+   -1.5371385,
+   -0.4985314
+  ],
+  [
+   -0.969266,
+   1.8760108,
+   0.041556
+  ],
+  [
+   0.0556434,
+   -0.2040259,
+   1.0572252
+  ]
+ ],
+ "noise": {
+  "unit": "DN sur 12 bits ; K = gain du systeme en DN par electron",
+  "K_min": 0.07329090909090909,
+  "K_max": 1.1726545454545454,
+  "read_gauss_logsigma": {
+   "slope": 1.0,
+   "bias": 4.007333185232471,
+   "sigma": 0.0
+  },
+  "read_tukey_logscale": {
+   "slope": 1.0,
+   "bias": 4.007333185232471,
+   "sigma": 0.0
+  },
+  "read_tukey_shape": [
+   0.0,
+   0.0
+  ],
+  "row_logsigma": {
+   "slope": 1.0,
+   "bias": -20.0,
+   "sigma": 0.0
+  },
+  "color_bias": [
+   [
+    0,
+    0,
+    0,
+    0
+   ],
+   [
+    0,
+    0,
+    0,
+    0
+   ]
+  ]
+ },
+ "fixed_pattern": {
+  "prnu_sigma": 0.01,
+  "dsnu_rel_sigma": 0.1,
+  "dark_current_e_per_s_at_20C": 148.4,
+  "hot_pixel_fraction": 0.0,
+  "note": "PRNU : la fiche garantit 2 % max, 1 % retenu. Courant d'obscurite : la fiche garantit 0,5 nA max a 40 C pour toute la matrice (8397 e-/s par pixel) ; valeur retenue = un dixieme de ce maximum, ramene a 20 C : c'est une estimation. DSNU 10 % pour un CCD (Janesick)."
+ },
+ "ccd": {
+  "smear_fraction": 0.0001,
+  "smear_ref_exposure_s": 0.033,
+  "antiblooming": 300.0,
+  "cti": 1e-05,
+  "interlace": "off"
+ },
+ "provenance": {
+  "sensor": "Fiche onsemi KAI-0373/D rev. 4 (mars 2015) : puits 55 ke-, bruit total 55 e- a 14 MHz, CTE 0,99999, protection contre l'eblouissement 300x, trainee 0,01 % typ. (0,04 % max) avec une tache sur 10 % de la hauteur et 33 ms de pose.",
+  "assumptions": [
+   "Le KAI-0373 est monochrome : la camera couleur a trois capteurs est une construction, pas un produit reel.",
+   "Couleurs : prisme ideal aux primaires Rec.709.",
+   "Convertisseur 12 bits et niveau noir de 64 : choix libres, la fiche ne decrit que le capteur.",
+   "ISO 100 correspond au gain 0 dB ; chaque doublement ajoute 6 dB."
+  ]
+ },
+ "sensor_pixels": [
+  768,
+  484
+ ],
+ "pixel_pitch_um": [
+  11.6,
+  13.6
+ ],
+ "sensor_grid_source": "Fiche onsemi KAI-0373/D rev. 4 : 768 x 484 photosites actifs de 11,6 x 13,6 um (zone utile 8,91 x 6,58 mm)."
+}

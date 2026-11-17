@@ -1,0 +1,203 @@
+{
+ "name": "Canon EOS 70D",
+ "sensor_type": "cmos",
+ "cfa": "RGGB",
+ "bits": 14,
+ "black_level": 800,
+ "white_level": 16383,
+ "xyz_d65_to_cam": [
+  [
+   0.7034,
+   -0.0804,
+   -0.1014
+  ],
+  [
+   -0.442,
+   1.2564,
+   0.2058
+  ],
+  [
+   -0.0851,
+   0.1994,
+   0.5758
+  ]
+ ],
+ "noise": {
+  "unit": "DN sur l'echelle 14 bits ; K = gain du systeme en DN par electron",
+  "K_min": 0.40749699481911256,
+  "K_max": 26.079807668423204,
+  "read_gauss_logsigma": {
+   "slope": 0.5681183926808191,
+   "bias": 1.9982663724918939,
+   "sigma": 0.24870223821017215
+  },
+  "read_tukey_logscale": {
+   "slope": 0.4868061424083776,
+   "bias": 1.4642678570994598,
+   "sigma": 0.3820056048326114
+  },
+  "read_tukey_shape": [
+   0.1428571428571428,
+   0.1428571428571428,
+   0.11428571428571421,
+   0.11428571428571421,
+   0.02857142857142858,
+   0.02857142857142858,
+   -0.10000000000000003,
+   -0.08571428571428574,
+   -0.17142857142857143,
+   -0.17142857142857143,
+   -0.15714285714285714,
+   -0.15714285714285714,
+   -0.08571428571428574,
+   -0.08571428571428574,
+   -0.02857142857142858,
+   -0.02857142857142858
+  ],
+  "row_logsigma": {
+   "slope": 0.7292220505388829,
+   "bias": -0.9370565150367796,
+   "sigma": 0.2502155842967251
+  },
+  "color_bias": [
+   [
+    0.7145485281944275,
+    0.5803739428520203,
+    0.3191665709018707,
+    0.42135176062583923
+   ],
+   [
+    0.6965571045875549,
+    0.6329420804977417,
+    0.3340599536895752,
+    0.33510327339172363
+   ],
+   [
+    0.5565698742866516,
+    0.6014482378959656,
+    0.28838393092155457,
+    0.22106163203716278
+   ],
+   [
+    0.6255998015403748,
+    0.5709607005119324,
+    0.28302812576293945,
+    0.283346027135849
+   ],
+   [
+    0.6153627634048462,
+    0.6635386943817139,
+    0.28569599986076355,
+    0.28746336698532104
+   ],
+   [
+    0.6572445034980774,
+    0.5786789655685425,
+    0.20863565802574158,
+    0.2324044406414032
+   ],
+   [
+    0.9002538323402405,
+    0.8294968008995056,
+    0.18920791149139404,
+    0.2821202576160431
+   ],
+   [
+    0.8010811805725098,
+    0.9896628260612488,
+    0.3373832404613495,
+    0.1594409942626953
+   ],
+   [
+    1.1451222896575928,
+    1.4027013778686523,
+    0.7497870326042175,
+    0.41875964403152466
+   ],
+   [
+    0.9111462831497192,
+    1.2889503240585327,
+    0.4804377853870392,
+    0.003431576769798994
+   ],
+   [
+    1.7777990102767944,
+    1.9533191919326782,
+    1.146877646446228,
+    0.6870290637016296
+   ],
+   [
+    1.6912871599197388,
+    2.0377118587493896,
+    0.4170716106891632,
+    0.29175758361816406
+   ],
+   [
+    3.321380615234375,
+    3.4301798343658447,
+    1.2066515684127808,
+    0.08737491816282272
+   ],
+   [
+    2.804884910583496,
+    3.2619242668151855,
+    0.43897131085395813,
+    0.016234150156378746
+   ],
+   [
+    3.6559011936187744,
+    5.306246280670166,
+    1.5786296129226685,
+    0.0077256085351109505
+   ],
+   [
+    3.4211416244506836,
+    6.13178825378418,
+    -0.5191395878791809,
+    -1.3928788900375366
+   ]
+  ]
+ },
+ "fixed_pattern": {
+  "prnu_sigma": 0.0,
+  "dsnu_rel_sigma": 0.4,
+  "dark_current_e_per_s_at_20C": 0.0,
+  "hot_pixel_fraction": 0.0,
+  "note": "non mesure pour cet appareil : valeurs neutres. dsnu_rel_sigma = 40 % du courant d'obscurite pour un CMOS selon Janesick (Photon Transfer, p.169), cite par pyradi."
+ },
+ "provenance": {
+  "noise": "ELD, Vandermode/ELD camera_params/release (MIT). Parametres calibres par les auteurs.",
+  "color": "LibRaw colordata.cpp (matrice Adobe XYZ D65 -> camera).",
+  "levels": "niveaux generiques du code ELD (16383-800), pas ceux de l'appareil",
+  "assumptions": [
+   "K est suppose proportionnel a l'ISO, avec K_min = ISO de base (100). Non confirme par ELD.",
+   "read_tukey_shape et color_bias sont des listes par reglage ISO calibre ; on les interpole regulierement en log(K) entre K_min et K_max. Correspondance exacte non publiee."
+  ]
+ },
+ "sensor_pixels": [
+  5472,
+  3648
+ ],
+ "pixel_pitch_um": [
+  1.0,
+  1.0
+ ],
+ "sensor_grid_source": "Canon EOS 70D : 5472 x 3648 photosites effectifs (20 Mpx), photosites carres (apotelyt.com, specspro.net).",
+ "video_modes": {
+  "1080p": {
+   "window": [
+    5472,
+    3078
+   ],
+   "readout": "skip3",
+   "size": [
+    1920,
+    1080
+   ],
+   "source": "Magic Lantern (fil 'Pixel binning patterns in LiveView', a1ex, et wiki 'pixel_binning') : la plupart des Canon regroupent 3 photosites de meme couleur horizontalement et ne lisent qu'une ligne sur trois ; seul le 5D Mark III regroupe aussi verticalement."
+  }
+ },
+ "spectral_ssf": "Canon_EOS_200D_380_780_5.json",
+ "spectral_default": true,
+ "spectral_source": "APPAREIL VOISIN : le 70D n'est pas mesure ; courbes du Canon EOS 200D (meme technologie Dual Pixel). Donnees rawtoaces-data (Academy Software Foundation, Apache-2.0), mesures Weta Digital (systeme lightsaber, 2022), 380-780 nm par pas de 5 nm."
+}

@@ -1,0 +1,273 @@
+<title>Fiche CameraSim</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap">
+<style>
+/* Mise en page : banc d'essai. En-tete court, legende de la mire, puis une fiche par reglage :
+   texte a gauche, avant / apres / difference a droite, groupes dans l'ordre de l'effet AE. */
+:root {
+  --bg: #f3f4f2;
+  --panel: #ffffff;
+  --ink: #1b1f22;
+  --muted: #5b6468;
+  --line: #d9dddb;
+  --accent: #0f6a73;
+  --accent-soft: #dcecec;
+  --warn: #8a5a00;
+  --warn-soft: #f6ead0;
+  --img-bg: #101314;
+  --f-display: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
+  --f-body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #121516; --panel: #1a1e20; --ink: #e6e9e8; --muted: #9aa4a7; --line: #2c3335;
+    --accent: #5cc3cb; --accent-soft: #173539; --warn: #e8b85c; --warn-soft: #3a2f17; --img-bg: #000;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #121516; --panel: #1a1e20; --ink: #e6e9e8; --muted: #9aa4a7; --line: #2c3335;
+  --accent: #5cc3cb; --accent-soft: #173539; --warn: #e8b85c; --warn-soft: #3a2f17; --img-bg: #000;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--ink); font-family: var(--f-body); font-size: 15px; line-height: 1.5;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 28px 64px;
+}
+.wrap { max-width: 1180px; margin: 0 auto; display: grid; gap: 28px; }
+h1, h2, h3 { font-family: var(--f-display); text-wrap: balance; margin: 0; }
+h1 { font-size: clamp(28px, 4vw, 40px); letter-spacing: -0.01em; }
+h2 { font-size: 22px; }
+h3 { font-size: 16px; font-weight: 600; }
+p { margin: 0; max-width: 68ch; }
+.lead { color: var(--muted); font-size: 16px; }
+.mono { font-family: var(--f-mono); font-size: 13px; }
+
+.intro { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px; align-items: start; }
+.box { background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 18px; display: grid; gap: 10px; min-width: 0; }
+.box ul { margin: 0; padding-left: 18px; display: grid; gap: 6px; }
+.scene { position: relative; }
+.scene img { width: 100%; display: block; border-radius: 3px; background: var(--img-bg); }
+.legend { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 4px 14px; font-size: 13px; color: var(--muted); }
+.legend b { color: var(--ink); font-weight: 600; }
+
+nav.groups {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg);
+  padding-block: 10px; border-bottom: 1px solid var(--line); display: grid; gap: 8px;
+}
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+.chips { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 2px; }
+.chips a {
+  flex: none; text-decoration: none; color: var(--ink); border: 1px solid var(--line); background: var(--panel);
+  border-radius: 999px; padding: 4px 11px; font-size: 13px; white-space: nowrap;
+}
+.chips a:hover, .chips a:focus-visible { border-color: var(--accent); color: var(--accent); outline: none; }
+.search { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.search input {
+  flex: 1 1 240px; min-width: 0; font: inherit; padding: 7px 10px; border-radius: 4px;
+  border: 1px solid var(--line); background: var(--panel); color: var(--ink);
+}
+.search input:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+.count { color: var(--muted); font-size: 13px; }
+
+section.group { display: grid; gap: 14px; scroll-margin-top: 110px; }
+section.group > header { display: flex; align-items: baseline; gap: 12px; border-bottom: 2px solid var(--ink); padding-bottom: 6px; }
+section.group > header span { color: var(--muted); font-size: 13px; }
+
+.card {
+  background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 16px;
+  display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 2fr); gap: 18px;
+}
+.card .txt { display: grid; gap: 8px; align-content: start; min-width: 0; }
+.name { font-family: var(--f-mono); font-size: 14px; font-weight: 500; overflow-wrap: anywhere; }
+.meta { display: flex; flex-wrap: wrap; gap: 6px; }
+.tag { font-size: 12px; padding: 2px 8px; border-radius: 3px; background: var(--accent-soft); color: var(--ink); }
+.tag.val { font-family: var(--f-mono); }
+.cond { font-size: 13px; background: var(--warn-soft); color: var(--ink); border-left: 3px solid var(--warn); padding: 6px 9px; border-radius: 0 3px 3px 0; }
+.cond b { color: var(--warn); font-weight: 600; }
+.shots { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; min-width: 0; }
+figure { margin: 0; display: grid; gap: 4px; min-width: 0; }
+figure img, .zoom { width: 100%; display: block; border-radius: 3px; background: var(--img-bg); }
+.zoom { image-rendering: pixelated; background-repeat: no-repeat; max-width: 100%; }
+figcaption { font-size: 12px; color: var(--muted); display: flex; justify-content: space-between; gap: 6px; }
+figcaption b { color: var(--ink); font-weight: 600; }
+.zooms { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.empty { color: var(--muted); padding: 30px 0; }
+@media (max-width: 860px) {
+  .intro { grid-template-columns: minmax(0, 1fr); }
+  .card { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 520px) {
+  .shots, .zooms { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .shots figure.diff, .zooms .zdiff { display: none; }
+}
+</style>
+
+<div class="wrap">
+  <header style="display:grid;gap:10px">
+    <h1>Fiche des réglages CameraSim</h1>
+    <p class="lead">Chaque réglage des deux effets After Effects, avec ce qu'il fait sur l'image et un exemple calculé par l'effet lui-même. <b>CameraSim</b> simule la caméra (capteur, électronique, traitement, étage vidéo). <b>CameraSim Analogique</b> simule le signal PAL / NTSC et la bande ; il se place après CameraSim. Les noms sont écrits comme dans After Effects. Pour chaque exemple : l'image avant, l'image après le réglage, et la différence entre les deux (amplifiée) qui montre où le réglage agit.</p>
+  </header>
+
+  <div class="intro">
+    <div class="box">
+      <h2>La mire d'essai</h2>
+      <div class="scene"><img id="scene" alt="Mire d'essai synthétique" width="480" height="270"></div>
+      <div class="legend">
+        <span><b>En haut à gauche</b> : pastilles de couleur</span>
+        <span><b>En haut au milieu</b> : cercles de plus en plus fins (moirage, netteté)</span>
+        <span><b>En haut à droite</b> : point très lumineux dans le noir (traînée, éblouissement)</span>
+        <span><b>Au milieu</b> : gamme de gris, un diaphragme par marche</span>
+        <span><b>En bas à gauche</b> : zone sombre unie (bruit, pixels chauds)</span>
+        <span><b>En bas à droite</b> : barres noires et blanches (contours, halos)</span>
+      </div>
+    </div>
+    <div class="box">
+      <h2>Pourquoi un réglage semble ne rien faire</h2>
+      <ul>
+        <li><b>Il ne concerne pas la caméra choisie.</b> Les groupes « CCD et 3 capteurs » et « Camescope », le dématriçage, le mode vidéo et la couleur spectrale ne servent qu'à certaines caméras. Depuis cette version, ces réglages sont <b>grisés</b> dans After Effects quand ils n'agissent pas.</li>
+        <li><b>Il dépend d'un autre réglage.</b> Exemples : rien dans CameraSim Analogique sur « Signal : Aucun » ; les réglages de bande sans bande ; les curseurs de l'étage vidéo seulement s'il est actif ; « colle à 1 » seulement si un bit est choisi. Ils sont grisés aussi.</li>
+        <li><b>L'effet est physiquement minuscule.</b> Le courant d'obscurité compte à peine à 1/50 s ; les défauts du convertisseur (en LSB, en marches) disparaissent à 14 bits. Il faut une pose longue, ou baisser la profondeur.</li>
+        <li><b>La valeur n'a pas été mesurée.</b> Sur les 5 appareils photo, la non-uniformité et le courant d'obscurité valent 0 dans le profil (pas de mesure publiée). L'ancien curseur « × profil » multipliait donc zéro. Il est remplacé par une valeur directe.</li>
+        <li><b>L'effet est très localisé.</b> Traînée, éblouissement, pixels chauds : quelques pixels autour des lumières fortes ou dans les noirs. Regarde la différence et les agrandissements.</li>
+        <li><b>Il a besoin du mouvement.</b> L'obturateur déroulant et la seconde trame des caméras entrelacées regardent l'image précédente et la suivante : sur une image fixe, ou avec « Mouvement entre images : Ignoré », ils ne font rien.</li>
+        <li><b>L'aperçu est réduit.</b> En 1/2 ou 1/4, chaque pixel de l'aperçu compte comme un photosite : le grain et les défauts fins changent d'aspect. Juge en pleine résolution.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="box">
+    <h2>Pour un aperçu plus rapide</h2>
+    <ul>
+      <li><b>Calcul : Carte graphique NVIDIA</b> (réglage par défaut) : la chaîne des appareils photo, la mesure du mouvement et le signal analogique y sont quatre à six fois plus rapides, pour la même image. Le nom de la carte utilisée s'affiche dans « À propos » de l'effet.</li>
+      <li><b>Mouvement entre images : Ignoré</b> pendant les réglages, puis « Estimé » pour le rendu. C'est l'étape la plus lourde (en 1920 × 1080, environ 0,06 s par mesure sur la carte graphique, 0,25 s sur le processeur ; l'obturateur déroulant en demande deux par image).</li>
+      <li><b>Précision du mouvement : Rapide</b> divise ce temps par deux, pour un résultat presque identique.</li>
+      <li><b>Aperçu en 1/2 ou 1/4</b> : tout est quatre à seize fois plus rapide (le grain change d'aspect, juger en pleine résolution).</li>
+      <li>L'effet partage le processeur entre les images qu'After Effects calcule en même temps : le processeur à 100 % pendant un rendu est normal, l'interface ne doit plus se figer.</li>
+    </ul>
+  </div>
+
+  <nav class="groups" aria-label="Groupes de réglages">
+    <div class="chips" id="chips"></div>
+    <div class="search">
+      <label for="q" class="count">Chercher</label>
+      <input id="q" type="search" placeholder="ex. bruit, VHS, colonnes, halos">
+      <span class="count" id="count"></span>
+    </div>
+  </nav>
+
+  <main id="list" style="display:grid;gap:34px"></main>
+</div>
+
+<script>
+const DATA = /*DATA*/null;
+const W = 480, H = 270;
+const img = id => "data:image/webp;base64," + DATA.images[id];
+document.getElementById("scene").src = img(DATA.scene);
+
+const groups = [];
+for (const c of DATA.cards) if (!groups.includes(c.group)) groups.push(c.group);
+const slug = g => "g-" + g.normalize("NFD").replace(/[^\w]+/g, "-").toLowerCase();
+
+const chips = document.getElementById("chips");
+for (const g of groups) {
+  const a = document.createElement("a");
+  a.href = "#" + slug(g); a.textContent = g;
+  chips.appendChild(a);
+}
+
+function el(tag, cls, text) {
+  const e = document.createElement(tag);
+  if (cls) e.className = cls;
+  if (text != null) e.textContent = text;
+  return e;
+}
+
+function shot(src, label, extra, cls) {
+  const f = el("figure", cls);
+  const i = el("img"); i.src = src; i.alt = label; i.width = W; i.height = H; i.loading = "lazy";
+  const cap = el("figcaption");
+  cap.appendChild(el("b", null, label));
+  if (extra) cap.appendChild(el("span", "mono", extra));
+  f.append(i, cap);
+  return f;
+}
+
+function zoom(src, z, label, cls) {
+  const [x, y, zw, zh] = z;
+  const f = el("figure", cls);
+  const d = el("div", "zoom");
+  d.style.aspectRatio = zw + " / " + zh;
+  d.style.backgroundImage = "url(" + src + ")";
+  d.style.backgroundSize = (W / zw * 100) + "% " + (H / zh * 100) + "%";
+  d.style.backgroundPosition = (zw < W ? x / (W - zw) * 100 : 0) + "% " + (zh < H ? y / (H - zh) * 100 : 0) + "%";
+  d.setAttribute("role", "img"); d.setAttribute("aria-label", label);
+  const cap = el("figcaption"); cap.appendChild(el("b", null, label));
+  f.append(d, cap);
+  return f;
+}
+
+const sections = [];
+for (const g of groups) {
+  const s = el("section", "group"); s.id = slug(g);
+  const h = el("header"); h.appendChild(el("h2", null, g));
+  const n = DATA.cards.filter(c => c.group === g).length;
+  h.appendChild(el("span", null, n + (n > 1 ? " réglages" : " réglage")));
+  s.appendChild(h);
+  for (const c of DATA.cards.filter(c => c.group === g)) {
+    const card = el("article", "card");
+    card.dataset.search = (c.name + " " + c.text + " " + (c.cond || "") + " " + g).toLowerCase();
+    const t = el("div", "txt");
+    t.appendChild(el("h3", "name", c.name));
+    const meta = el("div", "meta");
+    meta.appendChild(el("span", "tag val", "Exemple : " + c.shown));
+    meta.appendChild(el("span", "tag", c.camera));
+    t.appendChild(meta);
+    t.appendChild(el("p", null, c.text));
+    if (c.cond) {
+      const cd = el("p", "cond");
+      cd.appendChild(el("b", null, "Agit seulement si : "));
+      cd.appendChild(document.createTextNode(c.cond));
+      t.appendChild(cd);
+    }
+    const sh = el("div", "shots");
+    sh.append(shot(img(c.before), "Avant", null), shot(img(c.after), "Après", null),
+              shot(img(c.diff), "Différence", "× " + c.gain, "diff"));
+    if (c.zoom) {
+      const zs = el("div", "zooms");
+      zs.append(zoom(img(c.before), c.zoom, "Avant, agrandi"), zoom(img(c.after), c.zoom, "Après, agrandi"),
+                zoom(img(c.diff), c.zoom, "Différence, agrandie", "zdiff"));
+      sh.appendChild(zs);
+    }
+    card.append(t, sh);
+    s.appendChild(card);
+  }
+  sections.push(s);
+  document.getElementById("list").appendChild(s);
+}
+const empty = el("p", "empty", "Aucun réglage ne correspond. Essaie un autre mot.");
+empty.hidden = true;
+document.getElementById("list").appendChild(empty);
+
+const q = document.getElementById("q"), count = document.getElementById("count");
+function filter() {
+  const v = q.value.trim().toLowerCase();
+  let shown = 0;
+  for (const s of sections) {
+    let any = false;
+    for (const c of s.querySelectorAll(".card")) {
+      const ok = !v || c.dataset.search.includes(v);
+      c.hidden = !ok; any = any || ok; shown += ok;
+    }
+    s.hidden = !any;
+  }
+  empty.hidden = shown > 0;
+  count.textContent = shown + " sur " + DATA.cards.length + " réglages";
+}
+q.addEventListener("input", filter);
+filter();
+</script>
